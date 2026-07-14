@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Grade 12 General Math - Lesson 1-3: Continuity, End Behavior, and Limits (12Jen-math-T1-1.3-exam)</title>
+    <title>🧮 Continuity, End Behavior & Limits Exam</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;600;700;900&family=Inter:wght=400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; }
         body.en-mode { font-family: 'Inter', sans-serif; }
@@ -25,7 +25,7 @@
             position: fixed; top: 16px; left: 16px; z-index: 100;
             background: white; padding: 6px; border-radius: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; gap: 4px;
-            border: 2px solid #0d9488;
+            border: 2px solid #0369a1;
         }
         [dir="ltr"] .lang-switch { left: auto; right: 16px; }
         .lang-btn {
@@ -33,8 +33,8 @@
             transition: all 0.3s; border: none; font-size: 0.875rem;
             background: transparent; color: #6b7280;
         }
-        .lang-btn.active { background: #0d9488; color: white; box-shadow: 0 2px 6px rgba(13,148,136,0.4); }
-        .lang-btn:hover:not(.active) { background: #f0fdfa; color: #0d9488; }
+        .lang-btn.active { background: #0369a1; color: white; box-shadow: 0 2px 6px rgba(3,105,161,0.4); }
+        .lang-btn:hover:not(.active) { background: #f0f9ff; color: #0369a1; }
         .shuffle-badge {
             display: inline-block;
             background: linear-gradient(135deg, #f59e0b, #ef4444);
@@ -47,7 +47,7 @@
             animation: pulse 2s infinite;
         }
     </style>
-<script src="/_aistudio-iframe.js"></script></head>
+</head>
 <body class="bg-gray-50 text-gray-800 p-4 md:p-8 min-h-screen">
 
     <div class="lang-switch no-print">
@@ -56,24 +56,24 @@
     </div>
 
     <div id="timer-container" class="max-w-4xl mx-auto mb-4 text-center no-print">
-        <div class="bg-white p-4 rounded-xl shadow-md inline-block border-2 border-teal-100">
+        <div class="bg-white p-4 rounded-xl shadow-md inline-block border-2 border-sky-100">
             <span class="text-gray-600 ml-2" data-ar="⏱️ الوقت المتبقي:" data-en="⏱️ Time Remaining:">⏱️ الوقت المتبقي:</span>
-            <span id="timer" class="text-2xl font-bold text-teal-600 font-mono">60:00</span>
+            <span id="timer" class="text-2xl font-bold text-sky-700 font-mono">60:00</span>
             <span class="shuffle-badge" data-ar="🔀 أسئلة عشوائية" data-en="🔀 Random Questions">🔀 أسئلة عشوائية</span>
         </div>
     </div>
 
     <div class="max-w-4xl mx-auto mb-6 flex flex-wrap gap-3 justify-center no-print">
-        <button onclick="toggleAnswers()" class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="👁️ إظهار / إخفاء الإجابات" data-en="👁️ Show / Hide Answers">👁️ إظهار / إخفاء الإجابات</button>
+        <button onclick="toggleAnswers()" class="bg-sky-700 hover:bg-sky-800 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="👁️ إظهار / إخفاء الإجابات" data-en="👁️ Show / Hide Answers">👁️ إظهار / إخفاء الإجابات</button>
         <button onclick="window.print()" class="bg-gray-800 hover:bg-gray-900 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🖨️ طباعة / PDF" data-en="🖨️ Print / PDF">🖨️ طباعة / PDF</button>
-        <button onclick="reshuffleExam()" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🔀 إعادة خلط الأسئلة" data-en="🔀 Reshuffle Questions">🔀 إعادة خلط الأسئلة</button>
+        <button onclick="reshuffleExam()" class="bg-gradient-to-r from-sky-700 to-blue-700 hover:from-sky-800 hover:to-blue-800 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🔀 إعادة خلط الأسئلة" data-en="🔀 Reshuffle Questions">🔀 إعادة خلط الأسئلة</button>
     </div>
 
-    <header class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md mb-8 border-r-4 border-teal-600">
+    <header class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md mb-8 border-r-4 border-sky-700">
         <div class="text-center">
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2" data-ar="⚡ رياضيات الصف الثاني عشر عام" data-en="⚡ Grade 12 General Mathematics">⚡ رياضيات الصف الثاني عشر عام</h1>
-            <h2 class="text-lg text-teal-600 font-semibold" data-ar="الدرس 1-3: الاتصال والسلوك الطرفي والنهايات (الفصل الدراسي الأول)" data-en="Lesson 1-3: Continuity, End Behavior, and Limits (Term 1)">الدرس 1-3: الاتصال والسلوك الطرفي والنهايات (الفصل الدراسي الأول)</h2>
-            <p class="text-sm text-gray-600 mt-2" data-ar="اختبار شامل يغطي اختبار الاتصال ثلاثي الشروط وأنواع الانفصال ونظرية القيمة الوسطية وسلوك الطرفيات والنهايات." data-en="Lesson 1-3: Continuity, End Behavior, and Limits complete interactive test aligned with Ministry syllabus.">اختبار شامل يغطي اختبار الاتصال ثلاثي الشروط وأنواع الانفصال ونظرية القيمة الوسطية وسلوك الطرفيات والنهايات.</p>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2" data-ar="🧮 امتحان الاتصال والسلوك الطرفي والنهايات" data-en="🧮 Continuity, End Behavior & Limits Exam">🧮 امتحان الاتصال والسلوك الطرفي والنهايات</h1>
+            <h2 class="text-lg text-sky-700 font-semibold" data-ar="Continuity, End Behavior, and Limits" data-en="Continuity, End Behavior, and Limits">Continuity, End Behavior, and Limits</h2>
+            <p class="text-sm text-gray-600 mt-2" data-ar="مفهوم النهاية، أنواع الانفصال، نظرية القيمة الوسطية، السلوك الطرفي، والتطبيقات الحياتية" data-en="The limit concept, types of discontinuity, the Intermediate Value Theorem, end behavior, and real-life applications">مفهوم النهاية، أنواع الانفصال، نظرية القيمة الوسطية، السلوك الطرفي، والتطبيقات الحياتية</p>
             <p class="text-xs text-orange-600 mt-2 font-semibold" data-ar="⚠️ ملاحظة: يتم خلط ترتيب الأسئلة والخيارات تلقائياً مع كل تحديث للصفحة" data-en="⚠️ Note: Questions and options are randomly shuffled on every page refresh">⚠️ ملاحظة: يتم خلط ترتيب الأسئلة والخيارات تلقائياً مع كل تحديث للصفحة</p>
         </div>
         <div class="mt-4 flex flex-wrap justify-center gap-4 text-sm text-gray-600">
@@ -81,7 +81,7 @@
             <span><span data-ar="👤 الاسم:" data-en="👤 Name:">👤 الاسم:</span> <input type="text" id="studentName" class="border-b border-gray-400 bg-transparent w-32 text-center" placeholder="Enter name"></span>
             <span><span data-ar="🏫 الشعبة:" data-en="🏫 Class:">🏫 الشعبة:</span> <input type="text" id="studentClass" class="border-b border-gray-400 bg-transparent w-28 text-center" placeholder="Class"></span>
             <span><span data-ar="⏱️ المدة: 60 دقيقة" data-en="⏱️ Duration: 60 min">⏱️ المدة: 60 دقيقة</span></span>
-            <span><span data-ar="📊 המجموع: 100 درجة" data-en="📊 Total: 100 pts">📊 المجموع: 100 درجة</span></span>
+            <span><span data-ar="📊 المجموع: 100 درجة" data-en="📊 Total: 100 pts">📊 المجموع: 100 درجة</span></span>
         </div>
     </header>
 
@@ -94,7 +94,7 @@
     <div id="results-panel" class="max-w-4xl mx-auto mt-8 bg-white p-8 rounded-2xl shadow-2xl border-t-4 border-emerald-500 hidden no-print">
         <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center" data-ar="📊 نتائج الامتحان" data-en="📊 Exam Results">📊 نتائج الامتحان</h2>
         <div class="grid md:grid-cols-3 gap-4 mb-6">
-            <div class="bg-blue-50 p-4 rounded-xl text-center"><p data-ar="اسم الطالب" data-en="Student Name">اسم الطالب</p><p id="res-name" class="font-bold text-xl text-teal-700">-</p></div>
+            <div class="bg-blue-50 p-4 rounded-xl text-center"><p data-ar="اسم الطالب" data-en="Student Name">اسم الطالب</p><p id="res-name" class="font-bold text-xl text-sky-700">-</p></div>
             <div class="bg-purple-50 p-4 rounded-xl text-center"><p data-ar="التاريخ" data-en="Date">التاريخ</p><p id="res-date" class="font-bold text-xl text-purple-700">-</p></div>
             <div class="bg-emerald-50 p-4 rounded-xl text-center"><p data-ar="المجموع" data-en="Score">المجموع</p><p id="res-total" class="font-bold text-3xl text-emerald-600">0 / 100</p></div>
         </div>
@@ -107,29 +107,29 @@
             <h3 class="font-bold text-lg mb-4 text-gray-800" data-ar="📈 تفصيل الأداء حسب القسم:" data-en="📈 Performance Breakdown:">📈 تفصيل الأداء حسب القسم:</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات" data-en="Part 1: Basic Concepts, Rules, and Definitions">الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات</span>
-                    <span id="sec1-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="مفهوم النهاية والاتصال" data-en="The Limit Concept & Continuity">مفهوم النهاية والاتصال</span>
+                    <span id="sec1-score" class="font-bold text-sky-700">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة" data-en="Part 2: Calculations and Exact Numerical Solutions">الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة</span>
-                    <span id="sec2-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="أنواع الانفصال" data-en="Types of Discontinuity">أنواع الانفصال</span>
+                    <span id="sec2-score" class="font-bold text-sky-700">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل" data-en="Part 3: Advanced Skills, Applications, and Problems">الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل</span>
-                    <span id="sec3-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="نظرية القيمة الوسطية وتقريب الأصفار" data-en="The Intermediate Value Theorem & Approximating Zeros">نظرية القيمة الوسطية وتقريب الأصفار</span>
+                    <span id="sec3-score" class="font-bold text-sky-700">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية" data-en="Part 4: Mathematical Modeling, Graphing, and Practical Problems">الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية</span>
-                    <span id="sec4-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="السلوك الطرفي" data-en="End Behavior">السلوك الطرفي</span>
+                    <span id="sec4-score" class="font-bold text-sky-700">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي" data-en="Part 5: Higher-Order Thinking, Analysis, and Logical Connections">الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي</span>
-                    <span id="sec5-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="التطبيقات الحياتية" data-en="Real-Life Applications">التطبيقات الحياتية</span>
+                    <span id="sec5-score" class="font-bold text-sky-700">0/4</span>
                 </div>
             </div>
         </div>
         <div class="text-center mb-6">
-            <button id="sendEmailBtn" onclick="sendResultsToEmail()" class="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white text-lg px-8 py-3 rounded-xl font-bold shadow-xl transition transform hover:scale-105 cursor-pointer" data-ar="📧 إرسال النتائج للمعلم" data-en="📧 Send Results to Teacher">📧 إرسال النتائج للمعلم</button>
+            <button id="sendEmailBtn" onclick="sendResultsToEmail()" class="bg-gradient-to-r from-sky-700 to-blue-700 hover:from-sky-800 hover:to-blue-800 text-white text-lg px-8 py-3 rounded-xl font-bold shadow-xl transition transform hover:scale-105 cursor-pointer" data-ar="📧 إرسال النتائج للمعلم" data-en="📧 Send Results to Teacher">📧 إرسال النتائج للمعلم</button>
             <p id="emailStatus" class="text-sm mt-2 text-center font-medium"></p>
         </div>
         <div class="flex gap-3 justify-center">
@@ -138,10 +138,11 @@
     </div>
 
     <footer class="max-w-4xl mx-auto mt-10 mb-8 text-center text-gray-500 text-sm no-print">
-        © <span data-ar="رياضيات الصف 12 عام | الدرس 1-3: الاتصال والسلوك الطرفي والنهايات" data-en="Grade 12 General Math | Lesson 1-3: Continuity, End Behavior, and Limits">رياضيات الصف 12 عام | الدرس 1-3: الاتصال والسلوك الطرفي والنهايات</span> | Platform 4U Education
+        © <span data-ar="Continuity, End Behavior, and Limits" data-en="Continuity, End Behavior, and Limits">Continuity, End Behavior, and Limits</span> | Mr. Mohammed Hesham
     </footer>
 
 <script>
+// ==================== EmailJS Settings ====================
 const PUBLIC_KEY = "Rb3Lq8tXaFmc5YHUH";
 const SERVICE_ID = "service_w15m64i";
 const TEMPLATE_ID = "template_5b0u2tq";
@@ -150,627 +151,254 @@ const TARGET_EMAIL = "mohammedhesham872@gmail.com";
 emailjs.init(PUBLIC_KEY);
 
 const originalExamData = {
-    "title_ar": "الدرس 1-3: الاتصال والسلوك الطرفي والنهايات",
-    "title_en": "Lesson 1-3: Continuity, End Behavior, and Limits",
-    "desc_ar": "اختبار شامل يغطي اختبار الاتصال ثلاثي الشروط وأنواع الانفصال ونظرية القيمة الوسطية وسلوك الطرفيات والنهايات.",
-    "sections": [
+    sections: [
         {
-            "title": {
-                "ar": "🔹 الجزء الأول: اختبار الاتصال ثلاثي الشروط عند نقطة",
-                "en": "🔹 Part 1: اختبار الاتصال ثلاثي الشروط عند نقطة"
-            },
-            "questions": [
+            id: 'sec1',
+            title: { ar: '🔹 الجزء الأول: مفهوم النهاية والاتصال', en: '🔹 Part 1: The Limit Concept & Continuity' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "ما المفهوم الأساسي المرتبط بـ اختبار الاتصال ثلاثي الشروط عند نقطة؟",
-                        "en": "What is the basic concept associated with اختبار الاتصال ثلاثي الشروط عند نقطة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "العلاقة الرياضية الصحيحة والتمثيل الإحداثي الدقيق",
-                            "en": "The correct mathematical relation and accurate coordinate mapping"
-                        },
-                        {
-                            "ar": "حساب المعدلات الخطية للبيانات المستمرة فقط",
-                            "en": "Calculating linear rates for continuous data only"
-                        },
-                        {
-                            "ar": "تحليل القيم المطلقة واستبعاد الحلول التخيلية",
-                            "en": "Analyzing absolute values and excluding imaginary solutions"
-                        },
-                        {
-                            "ar": "دراسة سلوك طرفي الدالة عند اللانهاية دائماً",
-                            "en": "Studying the end behavior of a function at infinity always"
-                        }
+                    q: { ar: 'ماذا يعني مفهوم "النهاية" لدالة عند نقطة معينة؟', en: 'What does the concept of a "limit" of a function at a given point mean?' },
+                    options: [
+                        { ar: 'الاقتراب من قيمة معينة دون الوصول إليها بالضرورة عندما تقترب x من تلك النقطة', en: 'Approaching a certain value without necessarily reaching it as x approaches that point' },
+                        { ar: 'القيمة الفعلية للدالة عند تلك النقطة فقط', en: "Only the function's actual value at that point" },
+                        { ar: 'أكبر قيمة تصل إليها الدالة في كل مكان', en: 'The largest value the function reaches everywhere' },
+                        { ar: 'لا علاقة للنهاية بسلوك الدالة', en: "A limit is unrelated to a function's behavior" }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "المفهوم الأساسي يرتكز دائماً على إدراك القوانين الأساسية للعلاقات والدوال.",
-                        "en": "The basic concept always relies on understanding the core laws of relations and functions."
-                    }
+                    correct: 0,
+                    answer: { ar: 'ومفهوم االقتراب من قيمة دون الوصول إليها بالضرورة يُسمى نهاية', en: 'The concept of approaching a value without necessarily reaching it is called a limit' }
                 },
                 {
-                    "q": {
-                        "ar": "أي مما يلي يعبر بدقة عن إحدى القواعد الأساسية لـ اختبار الاتصال ثلاثي الشروط عند نقطة؟",
-                        "en": "Which of the following accurately expresses a basic rule for اختبار الاتصال ثلاثي الشروط عند نقطة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "القاعدة الأساسية التي تضمن الحصول على مخرجات وحيدة لكل مدخل حقيقي",
-                            "en": "The basic rule that ensures obtaining a unique output for each real input"
-                        },
-                        {
-                            "ar": "القاعدة التي تنفي تماماً ارتباط المتغيرات ذات الأسس الفردية",
-                            "en": "The rule that completely negates mapping variables with odd exponents"
-                        },
-                        {
-                            "ar": "القاعدة التي تقيد المجال للأعداد النسبية فقط",
-                            "en": "The rule that restricts the domain to rational numbers only"
-                        },
-                        {
-                            "ar": "قاعدة المساواة الصفرية لجميع المقادير الجبرية",
-                            "en": "The zero-equality rule for all algebraic expressions"
-                        }
+                    q: { ar: 'ما تعريف الدالة المتصلة من الناحية البيانية؟', en: 'What is the graphical definition of a continuous function?' },
+                    options: [
+                        { ar: 'دالة لا يحتوي تمثيلها البياني على فواصل أو فجوات أو فراغات، ويمكن تتبعها دون رفع القلم عن الورقة', en: "A function whose graph has no breaks, gaps, or holes, and can be traced without lifting the pencil from the paper" },
+                        { ar: 'دالة تحتوي دائماً على خطوط تقارب', en: 'A function that always has asymptotes' },
+                        { ar: 'دالة لها نفس القيمة في كل مكان', en: 'A function with the same value everywhere' },
+                        { ar: 'دالة غير معرفة عند أي نقطة', en: 'A function undefined at any point' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تضمن القواعد الرياضية سلامة العلاقات وصحة المخرجات من مدخلاتها.",
-                        "en": "Mathematical rules ensure the soundness of relations and validity of outputs from inputs."
-                    }
+                    correct: 0,
+                    answer: { ar: 'التمثيل البياني لدالة متصلة ال يحتوي على فواصل أو فجوات أو فراغات، ويمكن تتبع التمثيل البياني لدالة متصلة دون رفع القلم الرصاص عن الورقة', en: "The graph of a continuous function has no breaks, gaps, or holes, and can be traced without lifting the pencil from the paper" }
                 },
                 {
-                    "q": {
-                        "ar": "لماذا تعد دراسة اختبار الاتصال ثلاثي الشروط عند نقطة خطوة ضرورية لحل المشكلات المتقدمة؟",
-                        "en": "Why is studying اختبار الاتصال ثلاثي الشروط عند نقطة a necessary step for solving advanced problems?"
-                    },
-                    "options": [
-                        {
-                            "ar": "لأنها تضع الأساس المتين لفهم النماذج المعقدة وبناء الحلول البرمجية لها",
-                            "en": "Because it establishes the solid foundation for understanding complex models and coding their solutions"
-                        },
-                        {
-                            "ar": "لأنها تلغي الحاجة لاستخدام الحاسبات البيانية نهائياً",
-                            "en": "Because it completely eliminates the need for graphing calculators"
-                        },
-                        {
-                            "ar": "لأنها تعطي حلولاً تقريبية سريعة دون الحاجة للبرهان الجبري",
-                            "en": "Because it gives quick approximate solutions without algebraic proofs"
-                        },
-                        {
-                            "ar": "لأنها تفترض دائماً تماثل جميع الدوال الرياضية حركياً",
-                            "en": "Because it always assumes kinematics symmetry of all mathematical functions"
-                        }
+                    q: { ar: 'ما هي الشروط الثلاثة لاختبار اتصال دالة f(x) عند x=c؟', en: 'What are the three conditions for testing the continuity of f(x) at x=c?' },
+                    options: [
+                        { ar: 'f(c) موجودة، والنهاية عند c موجودة، وقيمة النهاية تساوي f(c)', en: 'f(c) exists, the limit at c exists, and the limit value equals f(c)' },
+                        { ar: 'فقط أن تكون f(c) موجودة', en: 'Only that f(c) exists' },
+                        { ar: 'فقط أن تكون الدالة خطية', en: 'Only that the function is linear' },
+                        { ar: 'لا توجد شروط محددة لذلك', en: 'There are no specific conditions for this' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الفهم المبدئي للقواعد يسهل فك وتبسيط المشاكل المركبة لاحقاً.",
-                        "en": "Initial understanding of rules facilitates unfolding and simplifying composite problems later."
-                    }
+                    correct: 0,
+                    answer: { ar: 'تكون الدالة f(x) متصلة عند x=c إذا كانت f(x) معرفة عند c، وf(x) تقترب من القيمة ذاتها من جانبي c، والقيمة التي تقترب منها هي f(c)', en: 'f(x) is continuous at x=c if f(x) is defined at c, f(x) approaches the same value from both sides of c, and that value equals f(c)' }
                 },
                 {
-                    "q": {
-                        "ar": "أي الرموز المصطلحية التالية ترتبط بـ اختبار الاتصال ثلاثي الشروط عند نقطة بشكل مباشر؟",
-                        "en": "Which of the following terminology symbols is directly associated with اختبار الاتصال ثلاثي الشروط عند نقطة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الرموز المصطلحية المحددة لخصائص المجال والمدى والتقاربات",
-                            "en": "The specific terminology symbols defining domain, range, and asymptotes"
-                        },
-                        {
-                            "ar": "الرمز المعبر عن التغير اللحظي المتجه فقط",
-                            "en": "The symbol representing instantaneous vector change only"
-                        },
-                        {
-                            "ar": "الرمز المحدد لأصفار المقادير كثيرة الحدود الفردية",
-                            "en": "The symbol specifying zeros of odd polynomial expressions"
-                        },
-                        {
-                            "ar": "الرموز المصطلحية لتكامل وحساب المساحات السطحية",
-                            "en": "The terminology symbols for integration and surface area calculations"
-                        }
+                    q: { ar: 'هل وجود قيمة f(c) أو عدم وجودها يؤثر على وجود نهاية للدالة عند تلك النقطة؟', en: 'Does whether f(c) exists affect whether the limit exists at that point?' },
+                    options: [
+                        { ar: 'لا، فوجود نهاية الدالة مستقل عن وجود قيمة الدالة عند تلك النقطة نفسها', en: "No, the existence of the limit is independent of whether the function's value exists at that point" },
+                        { ar: 'نعم، فبدون f(c) لا يمكن أبداً وجود نهاية', en: 'Yes, without f(c) a limit can never exist' },
+                        { ar: 'النهاية تساوي دائماً f(c) بغض النظر عن أي شيء', en: 'The limit always equals f(c) regardless of anything' },
+                        { ar: 'لا علاقة بين النهايات والاتصال إطلاقاً', en: 'Limits and continuity are completely unrelated' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تستخدم الرموز الرياضية لتكثيف التعبير عن العلاقات المعقدة بوضوح.",
-                        "en": "Mathematical symbols are used to concisely express complex relations clearly."
-                    }
+                    correct: 0,
+                    answer: { ar: 'إن وجود قيمة لـ f(x) عند x=c أو عدم وجودها ال يؤثر على وجود نهاية لـ f(x) مع اقتراب x من c', en: "Whether f(c) exists or not does not affect the existence of the limit of f(x) as x approaches c" }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الثاني: أنواع الانفصال: اللانهائي والقفزي والقابل للإزالة",
-                "en": "🔹 Part 2: أنواع الانفصال: اللانهائي والقفزي والقابل للإزالة"
-            },
-            "questions": [
+            id: 'sec2',
+            title: { ar: '🔹 الجزء الثاني: أنواع الانفصال', en: '🔹 Part 2: Types of Discontinuity' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "أوجد القيمة العددية الدقيقة للتعبير المرتبط بـ أنواع الانفصال: اللانهائي والقفزي والقابل للإزالة عند التعويض بالقيم المرجعية؟",
-                        "en": "Find the exact numerical value of the expression associated with أنواع الانفصال: اللانهائي والقفزي والقابل للإزالة upon reference substitution?"
-                    },
-                    "options": [
-                        {
-                            "ar": "القيمة العددية الدقيقة المحسوبة باتباع الترتيب الجبري الصارم للعمليات الحسابية",
-                            "en": "The exact numerical value calculated by following the strict algebraic order of operations"
-                        },
-                        {
-                            "ar": "قيمة تقريبية تقرب لأقرب جزء من عشرة آلاف",
-                            "en": "An approximate value rounded to the nearest ten-thousandth"
-                        },
-                        {
-                            "ar": "صفر دائم بسبب انعدام المقادير الفردية في المعادلة",
-                            "en": "Zero always due to the vanishing of odd expressions in the equation"
-                        },
-                        {
-                            "ar": "قيمة تخيلية تشتمل على المركب التخيلي المباشر i",
-                            "en": "An imaginary value comprising the direct imaginary unit i"
-                        }
+                    q: { ar: 'متى يكون للدالة "انفصال لا نهائي" عند x=c؟', en: 'When does a function have an "infinite discontinuity" at x=c?' },
+                    options: [
+                        { ar: 'إذا زادت قيمة الدالة أو تناقصت بشكل لا نهائي مع اقتراب x من c من اليسار واليمين', en: 'If the function increases or decreases infinitely as x approaches c from the left and right' },
+                        { ar: 'عندما تكون الدالة معرفة في كل مكان', en: 'When the function is defined everywhere' },
+                        { ar: 'عندما تقترب الدالة من نفس القيمة من الجهتين', en: 'When the function approaches the same value from both sides' },
+                        { ar: 'لا يحدث هذا النوع من الانفصال أبداً', en: 'This type of discontinuity never occurs' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التعويض الدقيق يعطي القيمة العددية الصحيحة الخالية من التقريب العشوائي.",
-                        "en": "Exact substitution gives the correct numerical value free from random approximation."
-                    }
+                    correct: 0,
+                    answer: { ar: 'يكون لدالة انفصال ال نهائي عند x=c إذا زادت قيمة الدالة أو تناقصت بشكل ال نهائي مع اقتراب x من c من اليسار واليمين', en: 'A function has an infinite discontinuity at x=c if the function increases or decreases infinitely as x approaches c from the left and right' }
                 },
                 {
-                    "q": {
-                        "ar": "ما هي النتيجة الصحيحة لتبسيط المقدار الرياضي الممثل لـ أنواع الانفصال: اللانهائي والقفزي والقابل للإزالة؟",
-                        "en": "What is the correct result of simplifying the mathematical expression representing أنواع الانفصال: اللانهائي والقفزي والقابل للإزالة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "المقدار المبسط كلياً الذي يختزل جميع الحدود المتشابهة في صياغة واحدة",
-                            "en": "The fully simplified expression that reduces all like terms into a single formulation"
-                        },
-                        {
-                            "ar": "مقدار من الدرجة الثامنة يشتمل على معاملات غير صحيحة",
-                            "en": "An eighth-degree expression containing non-integer coefficients"
-                        },
-                        {
-                            "ar": "تعبير لا خطي يؤول دائماً لمالانهاية الموجبة والسالبة",
-                            "en": "A non-linear expression always leading to positive and negative infinity"
-                        },
-                        {
-                            "ar": "مقدار صفري ينعدم تماماً عند جميع النقاط الحقيقية",
-                            "en": "A zero expression that vanishes completely at all real points"
-                        }
+                    q: { ar: 'متى يكون للدالة "انفصال قفزي" عند x=c؟', en: 'When does a function have a "jump discontinuity" at x=c?' },
+                    options: [
+                        { ar: 'عند وجود نهايتين للدالة بينما تقترب x من c من اليسار واليمين لكن بقيمتين مختلفتين', en: 'When there are two limits for the function as x approaches c from the left and right, but with different values' },
+                        { ar: 'عندما تكون الدالة غير معرفة في كل مكان', en: 'When the function is undefined everywhere' },
+                        { ar: 'عندما تكون النهاية من الجهتين متساوية دائماً', en: 'When the limit from both sides is always equal' },
+                        { ar: 'لا يحدث هذا النوع أبداً في الدوال الحقيقية', en: 'This type never occurs in real functions' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تبسيط المقادير يسهل تحليل خصائصها ورسم منحنياتها بيانيا.",
-                        "en": "Simplifying expressions makes it easier to analyze their properties and graph them."
-                    }
+                    correct: 0,
+                    answer: { ar: 'يكون لدالة انفصال قفزي عند x=c في حالة وجود نهايتين للدالة بينما تقترب x من c من اليسار واليمين ولكن بقيمتين مختلفتين', en: 'A function has a jump discontinuity at x=c when there are two limits as x approaches c from the left and right, but with different values' }
                 },
                 {
-                    "q": {
-                        "ar": "إذا قمنا بالتعويض في دالة أنواع الانفصال: اللانهائي والقفزي والقابل للإزالة بالمتغير المستقل المضاف، فما هو التعبير الناتج؟",
-                        "en": "If we substitute into the function of أنواع الانفصال: اللانهائي والقفزي والقابل للإزالة with the shifted independent variable, what is the resulting expression?"
-                    },
-                    "options": [
-                        {
-                            "ar": "التعبير الجبري المزاح الذي يعكس التحويل المطلوب بدقة متناهية",
-                            "en": "The shifted algebraic expression that reflects the required transformation with absolute accuracy"
-                        },
-                        {
-                            "ar": "نفس التعبير الأصلي دون أي تغيير في المعاملات أو الأسس",
-                            "en": "The same original expression without any change in coefficients or exponents"
-                        },
-                        {
-                            "ar": "تعبير خطي بسيط يخلو من المتغير المستقل الأصلي",
-                            "en": "A simple linear expression devoid of the original independent variable"
-                        },
-                        {
-                            "ar": "مقدار غير معرف بسبب وقوع الصفر في مقام الكسر",
-                            "en": "An undefined expression due to zero occurring in the fraction's denominator"
-                        }
+                    q: { ar: 'متى يكون للدالة "انفصال قابل للإزالة"؟', en: 'When does a function have a "removable discontinuity"?' },
+                    options: [
+                        { ar: 'عندما تكون الدالة متصلة في كل مكان باستثناء فجوة عند x=c', en: 'When the function is continuous everywhere except for a gap at x=c' },
+                        { ar: 'عندما تكون الدالة غير متصلة في كل مكان', en: 'When the function is discontinuous everywhere' },
+                        { ar: 'عندما يكون للدالة خط تقارب رأسي فقط', en: 'When the function has only a vertical asymptote' },
+                        { ar: 'لا يمكن وصف أي دالة بهذا النوع', en: 'No function can be described this way' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التعويض بالمتغير المزاح يعيد تشكيل الدالة لتعكس التحويل الهندسي الحاصل.",
-                        "en": "Substituting with a shifted variable reshapes the function to reflect the geometric transformation."
-                    }
+                    correct: 0,
+                    answer: { ar: 'يكون للدالة انفصال قابل لإلزالة عندما تكون الدالة متصلة في كل مكان باستثناء فجوة عند x=c', en: 'A function has a removable discontinuity when it is continuous everywhere except for a gap at x=c' }
                 },
                 {
-                    "q": {
-                        "ar": "ما هي أصفار المعادلة أو نقاط الحل المرتبطة بـ أنواع الانفصال: اللانهائي والقفزي والقابل للإزالة؟",
-                        "en": "What are the equation zeros or solution points associated with أنواع الانفصال: اللانهائي والقفزي والقابل للإزالة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "القيم العددية الدقيقة التي تحقق المعادلة وتجعل الدالة مساوية للصفر تماماً",
-                            "en": "The exact numerical values that satisfy the equation and make the function strictly equal to zero"
-                        },
-                        {
-                            "ar": "القيم السالبة فقط التي تقع ضمن فترات الاختبار غير الحقيقية",
-                            "en": "The negative values only that fall within non-real test intervals"
-                        },
-                        {
-                            "ar": "النقاط التي تتقاطع عندها الدالة مع خطوط التقارب المائلة",
-                            "en": "The points where the function intersects the oblique asymptotes"
-                        },
-                        {
-                            "ar": "أعداد حقيقية تزيد بمقدار الثابت التأسيسي للمحور الصادي",
-                            "en": "Real numbers shifted by the starting constant of the y-axis"
-                        }
+                    q: { ar: 'لماذا تُصنف الانفصالات اللانهائية والقفزية على أنها "غير قابلة للإزالة"؟', en: 'Why are infinite and jump discontinuities classified as "non-removable"?' },
+                    options: [
+                        { ar: 'لأنه لا يمكن إزالتها عن طريق إعادة تعريف الدالة عند تلك النقطة، حيث تقترب الدالة من قيم مختلفة أو تزيد/تنقص بلا نهاية', en: 'Because they cannot be removed by redefining the function at that point, since the function approaches different values or increases/decreases infinitely' },
+                        { ar: 'لأنها لا تحدث في الدوال الحقيقية إطلاقاً', en: 'Because they never occur in real functions' },
+                        { ar: 'لأنها تحدث فقط في الدوال الخطية', en: 'Because they only occur in linear functions' },
+                        { ar: 'لا يوجد سبب رياضي محدد لذلك', en: 'There is no specific mathematical reason for this' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "أصفار الدالة هي الحلول الجبرية الدقيقة الناتجة عن تصفير المعادلة.",
-                        "en": "The zeros of a function are the exact algebraic solutions resulting from setting the equation to zero."
-                    }
+                    correct: 0,
+                    answer: { ar: 'وال يمكن إزالة انفصال غير قابل لإلزالة عن طريق إعادة تعريف الدالة عند تلك النقطة، حيث تقترب الدالة من قيم مختلفة من الجانبين أو تشهد زيادة أو نقصاناً بصورة ال نهائية', en: 'A non-removable discontinuity cannot be removed by redefining the function at that point, since the function approaches different values from each side or undergoes infinite increase or decrease' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الثالث: نظرية القيمة الوسطية ومبدأ تحديد أصفار الدالة",
-                "en": "🔹 Part 3: نظرية القيمة الوسطية ومبدأ تحديد أصفار الدالة"
-            },
-            "questions": [
+            id: 'sec3',
+            title: { ar: '🔹 الجزء الثالث: نظرية القيمة الوسطية وتقريب الأصفار', en: '🔹 Part 3: The Intermediate Value Theorem & Approximating Zeros' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "ما هي المهارة الحسابية المتقدمة التي يجب تطبيقها لحل مشكلات نظرية القيمة الوسطية ومبدأ تحديد أصفار الدالة؟",
-                        "en": "What advanced calculation skill must be applied to solve problems of نظرية القيمة الوسطية ومبدأ تحديد أصفار الدالة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "التحليل الجبري الشامل وتحديد الشروط والقيود المفروضة على المتغيرات بدقة",
-                            "en": "Comprehensive algebraic analysis and strictly defining the conditions and constraints on variables"
-                        },
-                        {
-                            "ar": "استبدال جميع الثوابت بقيم عشوائية لتجربتها بالاختيار المتعدد",
-                            "en": "Replacing all constants with random values to test them via multiple choice"
-                        },
-                        {
-                            "ar": "استخدام الآلة الحاسبة دون الحاجة لفهم الخطوات التفصيلية للحل",
-                            "en": "Using the calculator without needing to understand the detailed solution steps"
-                        },
-                        {
-                            "ar": "الاعتماد على التقريب الهندسي السريع للمنحنيات اللانهائية",
-                            "en": "Relying on quick geometric approximation of infinite curves"
-                        }
+                    q: { ar: 'ماذا تنص نظرية القيمة الوسطية؟', en: 'What does the Intermediate Value Theorem state?' },
+                    options: [
+                        { ar: 'إذا كانت f(x) دالة متصلة وb<a وهناك قيمة n بين f(a) وf(b)، فهناك عدد c بين a وb بحيث f(c)=n', en: 'If f(x) is continuous and a<b, and n is a value between f(a) and f(b), then there is a number c between a and b such that f(c)=n' },
+                        { ar: 'كل دالة لها نفس القيمة في كل مكان', en: 'Every function has the same value everywhere' },
+                        { ar: 'لا يمكن لأي دالة متصلة أن تأخذ قيماً مختلفة', en: 'No continuous function can take different values' },
+                        { ar: 'النظرية تنطبق فقط على الدوال غير المتصلة', en: 'The theorem applies only to discontinuous functions' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "المهارات المتقدمة تشتمل على التحليل الرياضي المنطقي وتتبع الخطوات بدقة.",
-                        "en": "Advanced skills comprise logical mathematical analysis and tracking steps carefully."
-                    }
+                    correct: 0,
+                    answer: { ar: 'إذا كانت f(x) دالة متصلة وb<a وهناك قيمة n بحيث تكون n بين f(a) وf(b)، فهناك العدد c بحيث b<c<a وf(c)=n', en: 'If f(x) is continuous and b<a, and there is a value n between f(a) and f(b), then there is a number c such that b<c<a and f(c)=n' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف نتحقق من صحة الحل الجبري لـ نظرية القيمة الوسطية ومبدأ تحديد أصفار الدالة؟",
-                        "en": "How do we verify the validity of the algebraic solution for نظرية القيمة الوسطية ومبدأ تحديد أصفار الدالة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "بالتعويض بالحلول في المعادلة الأصلية والتأكد من تحقيقها للتساوي أو الشرط",
-                            "en": "By substituting the solutions into the original equation and ensuring they satisfy the equality or condition"
-                        },
-                        {
-                            "ar": "بمقارنتها بالرسوم التوضيحية التقريبية لدروس أخرى مختلفة",
-                            "en": "By comparing them with approximate illustrations of other different lessons"
-                        },
-                        {
-                            "ar": "بافتراض أن جميع الحلول الناتجة صحيحة دون الحاجة لأي تحقق إضافي",
-                            "en": "By assuming all resulting solutions are correct without any additional verification"
-                        },
-                        {
-                            "ar": "عن طريق تحويل جميع القيم الحقيقية إلى أعداد مركبة تخيلية دائمأ",
-                            "en": "By transforming all real values into complex imaginary numbers always"
-                        }
+                    q: { ar: 'كيف يُستخدم مبدأ تحديد الموقع (نتيجة نظرية القيمة الوسطية) لتقريب الأصفار؟', en: 'How is the location principle (a corollary of the Intermediate Value Theorem) used to approximate zeros?' },
+                    options: [
+                        { ar: 'إذا كانت f(a) وf(b) متعاكستين بالإشارة، فهناك على الأقل صفر حقيقي واحد بين a وb', en: 'If f(a) and f(b) have opposite signs, there is at least one real zero between a and b' },
+                        { ar: 'لا علاقة لإشارة القيم بوجود الأصفار', en: 'The sign of the values is unrelated to the existence of zeros' },
+                        { ar: 'يجب أن تكون f(a) وf(b) متساويتين لوجود صفر بينهما', en: 'f(a) and f(b) must be equal for a zero to exist between them' },
+                        { ar: 'لا يمكن تقريب الأصفار بهذه الطريقة أبداً', en: 'Zeros can never be approximated this way' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التحقق من الحلول يضمن استبعاد الحلول الدخيلة والتأكد من دقة العمل الجبري.",
-                        "en": "Verifying solutions ensures excluding extraneous solutions and validating the algebraic work."
-                    }
+                    correct: 0,
+                    answer: { ar: 'إذا كانت f(x) دالة متصلة وكانت f(a) وf(b) متعاكستان بالإشارة، فهناك على األقل قيمة واحدة c بحيث a<c<b وf(c)=0', en: 'If f(x) is continuous and f(a) and f(b) have opposite signs, there is at least one value c such that a<c<b and f(c)=0' }
                 },
                 {
-                    "q": {
-                        "ar": "ما هي الأخطاء الشائعة التي يجب تجنبها عند دراسة نظرية القيمة الوسطية ومبدأ تحديد أصفار الدالة؟",
-                        "en": "What are the common errors to avoid when studying نظرية القيمة الوسطية ومبدأ تحديد أصفار الدالة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "إغفال قيود المجال وشروط المعرفات مثل تجنب الصفر في المقام أو المقادير السالبة تحت الجذر الزوجي",
-                            "en": "Overlooking domain constraints and defined conditions like avoiding zero in denominator or negative values under even roots"
-                        },
-                        {
-                            "ar": "كتابة الرموز الرياضية بخط اليد بدلاً من طباعتها بالحاسوب",
-                            "en": "Writing mathematical symbols by hand instead of typing them on a computer"
-                        },
-                        {
-                            "ar": "استخدام ورق الرسم البياني غير المسطر بدقة",
-                            "en": "Using graph paper that is not ruled with absolute precision"
-                        },
-                        {
-                            "ar": "اعتبار جميع الدوال الأسية دوال لوغاريتمية طبيعية دائماً",
-                            "en": "Considering all exponential functions as natural logarithmic functions always"
-                        }
+                    q: { ar: 'هل عدم تغير إشارة الدالة بين قيمتين صحيحتين متتاليتين يعني بالضرورة عدم وجود أصفار حقيقية في تلك الفترة؟', en: 'Does the sign of a function not changing between consecutive integers necessarily mean there are no real zeros in that interval?' },
+                    options: [
+                        { ar: 'لا، فقد توجد أصفار حقيقية حتى بدون تغير الإشارة، والتمثيل البياني أفضل طريقة للتحقق', en: 'No, real zeros may exist even without a sign change, and graphing is the best way to verify' },
+                        { ar: 'نعم، عدم تغير الإشارة يعني عدم وجود أصفار بشكل قاطع دائماً', en: 'Yes, no sign change definitively means no zeros exist' },
+                        { ar: 'لا علاقة بين الإشارة ووجود الأصفار إطلاقاً', en: 'The sign is completely unrelated to the existence of zeros' },
+                        { ar: 'يعني ذلك أن الدالة غير متصلة', en: 'It means the function is discontinuous' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تجنب الأخطاء الشائعة يحمي الطالب من ارتكاب هفوات حسابية تضيع صحة النواتج.",
-                        "en": "Avoiding common errors protects students from making computational slips that compromise results."
-                    }
+                    correct: 0,
+                    answer: { ar: 'في حين يشير تغير العالمة في فترة إلى موقع صفر حقيقي، ال يشير عدم تغير العالمة إلى أنه ال توجد أصفار حقيقية في تلك الفترة؛ وتمثيل الدالة بيانياً هو أفضل طرق التحقق', en: 'While a sign change in an interval indicates the location of a real zero, no sign change does not indicate the absence of real zeros in that interval; graphing the function is the best way to verify' }
                 },
                 {
-                    "q": {
-                        "ar": "أي من الحالات التالية تعبر عن تطبيق متقدم لـ نظرية القيمة الوسطية ومبدأ تحديد أصفار الدالة؟",
-                        "en": "Which of the following cases expresses an advanced application of نظرية القيمة الوسطية ومبدأ تحديد أصفار الدالة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "تحليل الأنظمة الديناميكية وحساب فترات الثبات ومعدلات التغير للمتغيرات المعقدة",
-                            "en": "Analyzing dynamic systems and calculating stability intervals and rates of change for complex variables"
-                        },
-                        {
-                            "ar": "رسم أشكال هندسية بسيطة كالمستطيلات والمربعات يدوياً",
-                            "en": "Drawing simple geometric shapes like rectangles and squares by hand"
-                        },
-                        {
-                            "ar": "حساب العمليات الحسابية الأساسية للجمع والطرح الحسابي البسيط",
-                            "en": "Calculating basic arithmetic operations for simple addition and subtraction"
-                        },
-                        {
-                            "ar": "استبدال نظام الأرقام العشري بنظام العد الثنائي الإلكتروني",
-                            "en": "Substituting the decimal number system with the binary electronic system"
-                        }
+                    q: { ar: 'ما هو الشرط الأساسي لتطبيق مبدأ تحديد الموقع على دالة؟', en: 'What is the essential condition for applying the location principle to a function?' },
+                    options: [
+                        { ar: 'أن تكون الدالة متصلة على الفترة المعنية', en: 'The function must be continuous over the interval in question' },
+                        { ar: 'أن تكون الدالة غير متصلة', en: 'The function must be discontinuous' },
+                        { ar: 'لا يوجد شرط مسبق لتطبيقه', en: 'There is no prerequisite for applying it' },
+                        { ar: 'أن تكون الدالة خطية فقط', en: 'The function must be linear only' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تطبيقات الدوال كثيرة ومتشعبة في مجالات العلوم والهندسة والنمذجة الرياضية.",
-                        "en": "Function applications are numerous and diverse in science, engineering, and mathematical modeling."
-                    }
+                    correct: 0,
+                    answer: { ar: 'إذا كانت الدالة متصلة، فيمكنك تقريب موقع أصفارها باستخدام نظرية القيمة الوسطية والزمتها مبدأ تحديد الموقع', en: 'If the function is continuous, you can approximate the location of its zeros using the Intermediate Value Theorem and its corollary, the location principle' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الرابع: سلوك طرفي التمثيل البياني (End Behavior) باستخدام النهايات",
-                "en": "🔹 Part 4: سلوك طرفي التمثيل البياني (End Behavior) باستخدام النهايات"
-            },
-            "questions": [
+            id: 'sec4',
+            title: { ar: '🔹 الجزء الرابع: السلوك الطرفي', en: '🔹 Part 4: End Behavior' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "كيف تستخدم سلوك طرفي التمثيل البياني (End Behavior) باستخدام النهايات في حل المسائل التطبيقية والعملية؟",
-                        "en": "How is سلوك طرفي التمثيل البياني (End Behavior) باستخدام النهايات used in solving applied and practical problems?"
-                    },
-                    "options": [
-                        {
-                            "ar": "بتحويل النص اللفظي للمشكلة إلى معادلة رياضية دقيقة وحلها وفقاً للأساليب الجبرية المعتمدة",
-                            "en": "By translating the verbal problem into an accurate mathematical equation and solving it using approved algebraic methods"
-                        },
-                        {
-                            "ar": "برسم مخططات تقريبية ملونة دون الالتزام بالقيم والبيانات الواردة في السؤال",
-                            "en": "By drawing colorful approximate charts without adhering to the values and data in the question"
-                        },
-                        {
-                            "ar": "بافتراض أن الحل دائماً يؤول للرقم عشرة أو الصفر لسهولة التدوين",
-                            "en": "By assuming the solution always leads to ten or zero for easy recording"
-                        },
-                        {
-                            "ar": "بالاعتماد على التجربة العملية المتكررة داخل المختبرات فقط",
-                            "en": "By relying on repeated physical experimentation in laboratories only"
-                        }
+                    q: { ar: 'ماذا يصف "السلوك الطرفي" لدالة؟', en: 'What does the "end behavior" of a function describe?' },
+                    options: [
+                        { ar: 'كيفية سلوك الدالة على جانبي التمثيل البياني بينما تتزايد x أو تتناقص بلا نهاية', en: 'How the function behaves on both sides of the graph as x increases or decreases without bound' },
+                        { ar: 'قيمة الدالة عند الصفر فقط', en: "Only the function's value at zero" },
+                        { ar: 'عدد الأصفار الحقيقية للدالة', en: "The number of the function's real zeros" },
+                        { ar: 'لا علاقة له بسلوك الدالة عند القيم الكبيرة', en: "It is unrelated to the function's behavior at large values" }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "النمذجة الرياضية هي عملية تحويل الظواهر الحياتية إلى نماذج رياضية يمكن حلها وتحليلها.",
-                        "en": "Mathematical modeling is the process of converting real-world phenomena into mathematical models that can be solved and analyzed."
-                    }
+                    correct: 0,
+                    answer: { ar: 'يصف السلوك الطرفي لدالة كيفية سلوك الدالة على جانبي التمثيل البياني، أي ما يحدث لقيمة f(x) بينما تتزايد x أو تتناقص بال نهاية', en: 'The end behavior of a function describes how the function behaves on both sides of the graph, i.e., what happens to f(x) as x increases or decreases without bound' }
                 },
                 {
-                    "q": {
-                        "ar": "ما الأهمية العملية لدراسة سلوك طرفي التمثيل البياني (End Behavior) باستخدام النهايات في التخطيط واتخاذ القرارات؟",
-                        "en": "What is the practical importance of studying سلوك طرفي التمثيل البياني (End Behavior) باستخدام النهايات in planning and decision making?"
-                    },
-                    "options": [
-                        {
-                            "ar": "التنبؤ الدقيق بالقيم المستقبلية وتحديد الحدود القصوى والدنيا للمتغيرات المؤثرة كالأرباح والتكاليف",
-                            "en": "Accurately forecasting future values and determining maximum and minimum limits for influential variables like profits and costs"
-                        },
-                        {
-                            "ar": "الاستغناء الكامل عن الكوادر البشرية في مجالات الإحصاء الرياضي",
-                            "en": "Complete elimination of human personnel in mathematical statistics fields"
-                        },
-                        {
-                            "ar": "إثبات أن جميع المشاكل الحياتية يمكن تمثيلها بخطوط مستقيمة بسيطة دائماً",
-                            "en": "Proving that all real-life problems can always be represented by simple straight lines"
-                        },
-                        {
-                            "ar": "تقليص الفترات الزمنية اللازمة لتصنيع المنتجات بشكل يدوي",
-                            "en": "Reducing time intervals required for manufacturing products manually"
-                        }
+                    q: { ar: 'كيف يمكن وصف حالة اقتراب الدالة من قيمة ثابتة معينة دون بلوغها أبداً عندما تتزايد |x|؟', en: 'How is it described when a function approaches a fixed value without ever reaching it as |x| increases?' },
+                    options: [
+                        { ar: 'بأن نهاية الدالة عندما تقترب x من ∞ أو ∞- تساوي تلك القيمة الثابتة (خط تقارب أفقي)', en: 'By saying the limit of the function as x approaches ∞ or -∞ equals that fixed value (a horizontal asymptote)' },
+                        { ar: 'بأن الدالة غير معرفة عند تلك القيمة', en: 'By saying the function is undefined at that value' },
+                        { ar: 'بأن الدالة تصبح لا نهائية', en: 'By saying the function becomes infinite' },
+                        { ar: 'لا يمكن وصف هذه الحالة رياضياً', en: 'This case cannot be described mathematically' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تساعد دراسة النماذج الرياضية في بناء خطط استراتيجية مستندة إلى تقديرات وتنبؤات علمية دقيقة.",
-                        "en": "Studying mathematical models helps build strategic plans based on highly accurate scientific estimates and forecasts."
-                    }
+                    correct: 0,
+                    answer: { ar: 'وبدالً من أن تكون f(x) غير مقيدة، تقترب بعض الدوال من قيمة ثابتة ولكنها ال تبلغها أبداً؛ وهذا يوصف باستخدام مفهوم النهاية بأنها تقترب من قيمة معينة', en: 'Instead of f(x) being unbounded, some functions approach a fixed value but never reach it; this is described using the limit concept as approaching a specific value' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف يمثل سلوك سلوك طرفي التمثيل البياني (End Behavior) باستخدام النهايات بيانياً لتسهيل فهم وتفسير النتائج؟",
-                        "en": "How is the behavior of سلوك طرفي التمثيل البياني (End Behavior) باستخدام النهايات graphed to facilitate understanding and interpreting results?"
-                    },
-                    "options": [
-                        {
-                            "ar": "برسم منحنيات ناعمة ومستمرة تعكس خصائص الدالة وتظهر نقاط التقاطع والتماثل والتقارب بوضوح",
-                            "en": "By drawing smooth, continuous curves reflecting function properties, clearly showing intersections, symmetry, and asymptotes"
-                        },
-                        {
-                            "ar": "برسم مضلعات حادة الزوايا غير مستمرة على الإطلاق",
-                            "en": "By drawing sharp-angled polygons that are not continuous at all"
-                        },
-                        {
-                            "ar": "بتلوين المساحات المحصورة أسفل المنحنى بألوان زاهية مختلفة",
-                            "en": "By coloring the areas bounded below the curve with different bright colors"
-                        },
-                        {
-                            "ar": "بمحاكاة ثلاثية الأبعاد تعتمد على برمجيات التصميم المعماري الصرف",
-                            "en": "By 3D simulations relying purely on architectural design software"
-                        }
+                    q: { ar: 'كيف يمكن دعم فرضية السلوك الطرفي لدالة بالأرقام؟', en: "How can a hypothesis about a function's end behavior be supported with numbers?" },
+                    options: [
+                        { ar: 'بوضع جدول قيم يستكشف قيمة الدالة بينما تصبح x أكبر وأكبر أو أصغر وأصغر', en: "By making a value table exploring the function's value as x becomes larger and larger or more and more negative" },
+                        { ar: 'بحساب قيمة الدالة عند الصفر فقط', en: "By computing only the function's value at zero" },
+                        { ar: 'لا يمكن دعم الفرضية بالأرقام إطلاقاً', en: 'The hypothesis can never be supported with numbers' },
+                        { ar: 'برسم خط مستقيم فقط', en: 'By only drawing a straight line' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "التمثيل البياني يجسد سلوك الدوال المعقدة بطريقة بصرية سهلة القراءة والتحليل.",
-                        "en": "Graphing embodies the behavior of complex functions in a visual, easy-to-read, and analyze format."
-                    }
+                    correct: 0,
+                    answer: { ar: 'ضع جدوالً بالقيم الستكشاف قيم الدالة مع تزايد |x|، أي استكشف قيمة f(x) بينما تصبح x أكبر وأكبر أو أصبح سالبة بدرجة أكبر', en: "Make a value table to explore the function's values as |x| increases, i.e., explore f(x) as x becomes larger and larger or more negative" }
                 },
                 {
-                    "q": {
-                        "ar": "أي مما يلي يمثل سيناريو عملي واقعي لتطبيق سلوك طرفي التمثيل البياني (End Behavior) باستخدام النهايات؟",
-                        "en": "Which of the following represents a realistic practical scenario for applying سلوك طرفي التمثيل البياني (End Behavior) باستخدام النهايات?"
-                    },
-                    "options": [
-                        {
-                            "ar": "حساب تغير درجات حرارة الغلاف الجوي أو حساب التكاثر البكتيري ونمو السكان والشركات عبر الزمن",
-                            "en": "Calculating atmospheric temperature variations or bacterial growth, population growth, and company expansion over time"
-                        },
-                        {
-                            "ar": "ترتيب الكتب في المكتبات المدرسية بناء على الحجم والوزن",
-                            "en": "Arranging books in school libraries based on size and weight"
-                        },
-                        {
-                            "ar": "تصنيف الحيوانات الأليفة في حدائق الحيوان بناء على فصائلها الحيوية",
-                            "en": "Classifying domestic animals in zoos based on their biological families"
-                        },
-                        {
-                            "ar": "حساب السرعة القصوى للقطارات البخارية القديمة في القرن التاسع عشر",
-                            "en": "Calculating the top speed of old steam trains in the nineteenth century"
-                        }
+                    q: { ar: 'في حالة دالة كثيرة حدود من الدرجة الزوجية بمعامل حد أكبر سالب، ما هو السلوك الطرفي المتوقع؟', en: 'For an even-degree polynomial with a negative leading coefficient, what is the expected end behavior?' },
+                    options: [
+                        { ar: 'تقترب الدالة من ∞- من كلا الجهتين (اليسار واليمين)', en: 'The function approaches -∞ from both directions (left and right)' },
+                        { ar: 'تقترب من ∞ من كلا الجهتين', en: 'It approaches ∞ from both directions' },
+                        { ar: 'تقترب من صفر من كلا الجهتين', en: 'It approaches zero from both directions' },
+                        { ar: 'لا يمكن التنبؤ بالسلوك الطرفي لهذا النوع من الدوال', en: "This type of function's end behavior cannot be predicted" }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "تدخل هذه النماذج في دراسة وحل مشكلات النمو والتكاثر ونسب التغير في الطبيعة والصناعة.",
-                        "en": "These models are involved in studying and solving problems of growth, decay, and rates of change in nature and industry."
-                    }
+                    correct: 0,
+                    answer: { ar: 'في مثال f(x)=-x⁴+8x³+3x²+6x-80، تقترب f(x) من ∞- عندما تقترب x من ∞- وأيضاً عندما تقترب x من ∞، لأن درجة الدالة زوجية ومعامل الحد الأكبر سالب', en: 'In the example f(x)=-x⁴+8x³+3x²+6x-80, f(x) approaches -∞ as x approaches -∞ and also as x approaches ∞, since the degree is even and the leading coefficient is negative' }
                 }
             ]
         },
         {
-            "title": {
-                "ar": "🔹 الجزء الخامس: حساب النهايات بيانياً وجبرياً للقيم غير المعرفة",
-                "en": "🔹 Part 5: حساب النهايات بيانياً وجبرياً للقيم غير المعرفة"
-            },
-            "questions": [
+            id: 'sec5',
+            title: { ar: '🔹 الجزء الخامس: التطبيقات الحياتية', en: '🔹 Part 5: Real-Life Applications' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "ما هو التحدي الرياضي والتحليل المنطقي المرتبط بـ حساب النهايات بيانياً وجبرياً للقيم غير المعرفة؟",
-                        "en": "What is the mathematical challenge and logical analysis associated with حساب النهايات بيانياً وجبرياً للقيم غير المعرفة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الربط العميق بين الأساليب الجبرية والتطبيقات البيانية وإثبات صحة النظريات والحلول علمياً",
-                            "en": "Deeply connecting algebraic methods with graphical applications and scientifically proving theories and solutions"
-                        },
-                        {
-                            "ar": "حفظ جميع الصيغ الرياضية غيباً دون الحاجة لفهم كيفية استنتاجها أو تطبيقها",
-                            "en": "Memorizing all mathematical formulas by heart without needing to understand how they are derived or applied"
-                        },
-                        {
-                            "ar": "إثبات أن جميع العمليات الحسابية يمكن اختزالها بالجمع الرياضي البسيط",
-                            "en": "Proving that all mathematical operations can be reduced to simple addition"
-                        },
-                        {
-                            "ar": "تجاهل الشروط الخاصة بتماثل المنحنيات لتبسيط الحلول",
-                            "en": "Ignoring curve symmetry conditions to simplify solutions"
-                        }
+                    q: { ar: 'في تطبيق طاقة الجاذبية الكامنة U(r)=-GmMe/r، ماذا يحدث لهذه الطاقة عندما يتحرك جسم مبتعداً عن الأرض؟', en: 'In the gravitational potential energy application U(r)=-GmMe/r, what happens to this energy as an object moves away from Earth?' },
+                    options: [
+                        { ar: 'تقترب طاقة الجاذبية الكامنة من الصفر لأن الكسر GmMe/r يقترب من صفر مع تزايد r', en: 'The gravitational potential energy approaches zero because the fraction GmMe/r approaches zero as r increases' },
+                        { ar: 'تصبح الطاقة لا نهائية', en: 'The energy becomes infinite' },
+                        { ar: 'تبقى الطاقة ثابتة دون تغيير أبداً', en: 'The energy remains constant, never changing' },
+                        { ar: 'لا علاقة للنهايات بهذا النوع من التطبيقات الفيزيائية', en: 'Limits are unrelated to this type of physical application' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "مهارات التفكير العليا تطلب الربط الواعي والفهم الشامل ومناقشة الحلول وبراهينها.",
-                        "en": "Higher-order thinking skills require conscious linking, comprehensive understanding, and discussing solutions and their proofs."
-                    }
+                    correct: 0,
+                    answer: { ar: 'بالنسبة إلى قيم r المتزايدة، سوف يقترب الكسر GmMe/r من صفر، وعلى ذلك إذا تحرك جسم مبتعداً عن األرض، فإن طاقة الجاذبية الكامنة به تقترب من صفر', en: 'For increasing values of r, the fraction GmMe/r approaches zero, so if an object moves away from Earth, its gravitational potential energy approaches zero' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف نبرهن بشكل منطقي صحة الحلول المقترحة لمشكلات حساب النهايات بيانياً وجبرياً للقيم غير المعرفة؟",
-                        "en": "How do we logically prove the validity of proposed solutions for حساب النهايات بيانياً وجبرياً للقيم غير المعرفة problems?"
-                    },
-                    "options": [
-                        {
-                            "ar": "باستخدام قوانين المنطق الرياضي والبراهين الجبرية المتعاقبة التي لا تقبل الشك",
-                            "en": "Using the laws of mathematical logic and sequential algebraic proofs that leave no room for doubt"
-                        },
-                        {
-                            "ar": "بأخذ رأي أغلبية الطلاب في الصف كمرجع لصحة الإجابة",
-                            "en": "By taking the opinion of the majority of classmates as a reference for the correct answer"
-                        },
-                        {
-                            "ar": "بمقارنتها بالحلول التقريبية للمقادير الهندسية في مجالات الفضاء",
-                            "en": "By comparing them with approximate solutions of geometric figures in space fields"
-                        },
-                        {
-                            "ar": "بافتراض أن جميع النماذج تتوافق تلقائياً مع الفرضيات الرياضية البسيطة",
-                            "en": "By assuming that all models automatically conform to simple mathematical hypotheses"
-                        }
+                    q: { ar: 'في مسألة انتقال الحرارة بين غرفتين عبر جدار له سمك متغير w، كيف تُستخدم النهايات والاتصال؟', en: 'In a heat transfer problem between two rooms through a wall of variable thickness w, how are limits and continuity used?' },
+                    options: [
+                        { ar: 'بفحص اتصال الدالة عند قيم معينة لـ w، وتحديد ما إذا كان هناك انفصال', en: 'By examining the continuity of the function at certain values of w and determining whether a discontinuity exists' },
+                        { ar: 'لا علاقة للنهايات بمسائل انتقال الحرارة', en: 'Limits are unrelated to heat transfer problems' },
+                        { ar: 'بجمع درجات الحرارة فقط دون أي معادلة', en: 'By simply adding temperatures without any equation' },
+                        { ar: 'بضرب سمك الجدار في درجة الحرارة مباشرة', en: 'By multiplying wall thickness directly by temperature' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "البرهان الرياضي يقوم على التسلسل المنطقي والقوانين المثبتة سابقاً بعيداً عن العشوائية.",
-                        "en": "Mathematical proof is based on logical sequencing and previously proven laws, far from randomness."
-                    }
+                    correct: 0,
+                    answer: { ar: 'يمكن تمثيل انتقال الحرارة بدالة تعتمد على w، وفحص اتصال هذه الدالة عند قيم معينة يساعد على تحديد سلوكها ووجود أي انفصال', en: 'Heat transfer can be represented by a function depending on w, and examining its continuity at certain values helps determine its behavior and any discontinuity' }
                 },
                 {
-                    "q": {
-                        "ar": "ما الذي يستنتجه الطالب المتميز بعد دراسته العميقة لـ حساب النهايات بيانياً وجبرياً للقيم غير المعرفة؟",
-                        "en": "What does an outstanding student conclude after a deep study of حساب النهايات بيانياً وجبرياً للقيم غير المعرفة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "أن الرياضيات لغة متكاملة تصف الطبيعة بدقة وتوفر أدوات تحليل وحل لأعقد الظواهر المحيطة بنا",
-                            "en": "That mathematics is an integrated language describing nature accurately and providing tools to analyze and solve the most complex phenomena around us"
-                        },
-                        {
-                            "ar": "أن جميع المسائل الرياضية تم حلها سابقاً ولا حاجة للمزيد من الابتكار أو التطوير",
-                            "en": "That all mathematical problems have been solved previously and there is no need for further innovation or development"
-                        },
-                        {
-                            "ar": "أن النماذج الخطية كافية وحدها لتمثيل كل المتغيرات في الكون دون حاجة للنماذج اللاخطية",
-                            "en": "That linear models alone are sufficient to represent all variables in the universe without needing non-linear models"
-                        },
-                        {
-                            "ar": "أن دراسة الدوال تقتصر فائدتها على اجتياز الاختبارات المدرسية المحددة فقط",
-                            "en": "That studying functions is useful only for passing specific school examinations"
-                        }
+                    q: { ar: 'في مسألة تخفيف محلول كيميائي بإضافة كمية x من محلول آخر، كيف يُستخدم مفهوم الاتصال؟', en: "In a chemical solution dilution problem by adding an amount x of another solution, how is the continuity concept used?" },
+                    options: [
+                        { ar: 'بفحص ما إذا كانت دالة التركيز C(x) متصلة عند قيم معينة لـ x، وتحديد تأثير أي انفصال محتمل على تفسير النتيجة الكيميائية', en: 'By examining whether the concentration function C(x) is continuous at certain x values, and determining the effect of any possible discontinuity on interpreting the chemical result' },
+                        { ar: 'لا علاقة لمفهوم الاتصال بهذا النوع من المسائل الكيميائية', en: 'Continuity is unrelated to this type of chemistry problem' },
+                        { ar: 'بافتراض أن التركيز ثابت دائماً بغض النظر عن x', en: 'By assuming concentration is always constant regardless of x' },
+                        { ar: 'بضرب التركيزين معاً فقط', en: 'By simply multiplying the two concentrations together' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الرياضيات هي أداة التفكير العلمي المنظم ولغة التطوير والابتكار التكنولوجي المستمر.",
-                        "en": "Mathematics is the tool of organized scientific thinking and the language of continuous technological development and innovation."
-                    }
+                    correct: 0,
+                    answer: { ar: 'يُفحص اتصال دالة التركيز C(x) عند قيم معينة باستخدام اختبار االتصال، وإذا كانت منفصلة، يُوصف تأثير ذلك على تفسير تركيز المزيج', en: 'The continuity of the concentration function C(x) is examined at certain values using the continuity test, and if discontinuous, the effect on interpreting the mixture concentration is described' }
                 },
                 {
-                    "q": {
-                        "ar": "كيف يسهم التفكير الإبداعي في تطوير وتطبيق نماذج حساب النهايات بيانياً وجبرياً للقيم غير المعرفة؟",
-                        "en": "How does creative thinking contribute to developing and applying models of حساب النهايات بيانياً وجبرياً للقيم غير المعرفة?"
-                    },
-                    "options": [
-                        {
-                            "ar": "بابتكار طرق حل جديدة واختصار الخطوات الطويلة ودمج المعارف والربط بين حقول العلوم المختلفة",
-                            "en": "By innovating new solution methods, shortcutting long steps, merging knowledge, and linking different fields of science"
-                        },
-                        {
-                            "ar": "بتصميم واجهات ملونة وغير منظمة لتبديد رتابة الرسوم البيانية القديمة",
-                            "en": "By designing colorful, unorganized interfaces to break the monotony of old graphs"
-                        },
-                        {
-                            "ar": "بالتخلي عن القوانين الجبرية الصارمة واعتماد الحدس الرياضي المباشر فقط",
-                            "en": "By abandoning strict algebraic laws and relying solely on direct mathematical intuition"
-                        },
-                        {
-                            "ar": "باستبدال الأرقام بالرموز التعبيرية التفاعلية الممتعة",
-                            "en": "By replacing numbers with fun, interactive expressive emojis"
-                        }
+                    q: { ar: 'في تطبيق حساب عدد المركبات التي تستخدم الوقود البديل بمرور الزمن، كيف يُستخدم السلوك الطرفي؟', en: "In an application calculating the number of alternative-fuel vehicles over time, how is end behavior used?" },
+                    options: [
+                        { ar: 'بفحص ما يحدث للدالة عندما تتزايد قيمة t بلا نهاية، ومقارنة الاتجاه الناتج بالواقع العملي لتحديد صلاحية النموذج مستقبلاً', en: 'By examining what happens to the function as t increases without bound, and comparing the resulting trend with reality to assess the model\'s future validity' },
+                        { ar: 'لا علاقة للسلوك الطرفي بتقييم النماذج الرياضية', en: 'End behavior is unrelated to evaluating mathematical models' },
+                        { ar: 'بحساب القيمة عند t=0 فقط', en: 'By computing only the value at t=0' },
+                        { ar: 'بافتراض أن النموذج صحيح دائماً بلا حدود', en: 'By assuming the model is always valid without limits' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "يسهم الإبداع في كسر الجمود الرياضي وتسهيل المعرفة وجعلها أكثر متعة وفائدة للبشرية.",
-                        "en": "Creativity contributes to breaking mathematical rigidity, facilitating knowledge, and making it more enjoyable and useful for humanity."
-                    }
+                    correct: 0,
+                    answer: { ar: 'يُستخدم السلوك الطرفي للتمثيل البياني لوصف توجه الاتجاه المستقبلي، وتُدعم الفرضية باألرقام، ثم يُحكم على مدى واقعية هذا التوجه', en: "The graph's end behavior is used to describe the future trend, the hypothesis is supported with numbers, and the realism of that trend is then judged" }
                 }
             ]
         }
@@ -816,6 +444,8 @@ function prepareShuffledExam() {
             globalIdx++;
         });
     });
+    
+    console.log('✅ تم خلط الأسئلة والخيارات بنجاح');
 }
 
 function reshuffleExam() {
@@ -852,8 +482,8 @@ function setLanguage(lang) {
 function renderExam() {
     const container = document.getElementById('exam-content');
     const labels = {
-        ar: { option: ['أ', 'ب', 'ج', 'د'], answer: '✅ الإجابة الصحيحة:' },
-        en: { option: ['A', 'B', 'C', 'D'], answer: '✅ Correct Answer:' }
+        ar: { option: ['أ', 'ب', 'ج', 'د'], answer: '✅ الإجابة:' },
+        en: { option: ['A', 'B', 'C', 'D'], answer: '✅ Answer:' }
     };
     const lbl = labels[currentLang];
     const isRTL = currentLang === 'ar';
@@ -864,13 +494,13 @@ function renderExam() {
     examData.sections.forEach((section) => {
         html += `
         <section class="bg-white p-6 rounded-xl shadow-lg">
-            <h2 class="text-xl font-bold mb-4 text-teal-700">${section.title[currentLang]}</h2>
+            <h2 class="text-xl font-bold mb-4 text-sky-800">${section.title[currentLang]}</h2>
             <ol class="space-y-4 text-sm">`;
             
         section.questions.forEach((q) => {
             const borderSide = isRTL ? 'border-r-4 pr-4' : 'border-l-4 pl-4';
             html += `
-                <li class="${borderSide} border-teal-500 py-2" id="q-${globalIdx}">
+                <li class="${borderSide} border-sky-600 py-2" id="q-${globalIdx}">
                     <strong>${globalIdx + 1}.</strong> ${q.q[currentLang]}<br>`;
                     
             q.options.forEach((opt, oIdx) => {
@@ -935,17 +565,15 @@ function gradeExam() {
                 correctCount++;
                 li.classList.add('correct');
                 li.classList.remove('incorrect');
-            } else {
-                li.classList.add('incorrect');
-                li.classList.remove('correct');
-            }
-
-            if (isCorrect) {
+                
                 if (i < 4) sec1++;
                 else if (i < 8) sec2++;
                 else if (i < 12) sec3++;
                 else if (i < 16) sec4++;
                 else sec5++;
+            } else {
+                li.classList.add('incorrect');
+                li.classList.remove('correct');
             }
         }
     }
@@ -953,7 +581,7 @@ function gradeExam() {
     const score = (correctCount / 20) * 100;
     const successRate = Math.round(score);
     
-    document.getElementById('res-total').textContent = `${successRate} / 100`;
+    document.getElementById('res-total').textContent = `${Math.round(score)} / 100`;
     document.getElementById('res-name').textContent = document.getElementById('studentName').value || (currentLang === 'ar' ? 'طالب' : 'Student');
     document.getElementById('res-date').textContent = new Date().toLocaleDateString(currentLang === 'ar' ? 'ar-AE' : 'en-US');
     
@@ -998,85 +626,74 @@ function sendResultsToEmail() {
     const badge = document.getElementById('success-badge').textContent;
 
     const sectionNames = {
-        ar: [
-            "الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات",
-            "الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة",
-            "الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل",
-            "الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية",
-            "الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي"
-        ],
-        en: [
-            "Part 1: Basic Concepts, Rules, and Definitions",
-            "Part 2: Calculations and Exact Numerical Solutions",
-            "Part 3: Advanced Skills, Applications, and Problems",
-            "Part 4: Mathematical Modeling, Graphing, and Practical Problems",
-            "Part 5: Higher-Order Thinking, Analysis, and Logical Connections"
-        ]
+        ar: ['مفهوم النهاية والاتصال', 'أنواع الانفصال', 'نظرية القيمة الوسطية وتقريب الأصفار', 'السلوك الطرفي', 'التطبيقات الحياتية'],
+        en: ['The Limit Concept & Continuity', 'Types of Discontinuity', 'The Intermediate Value Theorem & Approximating Zeros', 'End Behavior', 'Real-Life Applications']
     };
     const currentSectionNames = sectionNames[currentLang];
 
     let answersHTML = `
-        <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; direction: \${currentLang === 'ar' ? 'rtl' : 'ltr'}; text-align: \${currentLang === 'ar' ? 'right' : 'left'};">
-            <div style="background: linear-gradient(135deg, #0d9488, #0891b2); color: white; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
-                <h2 style="margin: 0; font-size: 22px;">⚡ \${currentLang === 'ar' ? 'نتيجة امتحان الرياضيات والتحليل التفاعلي' : 'Math Interactive Exam Result'}</h2>
-                <p style="margin: 5px 0 0 0; opacity: 0.9;">\${currentLang === 'ar' ? 'رياضيات الصف الثاني عشر عام | الفصل الدراسي الأول' : 'Grade 12 General Math | Term 1'}</p>
-                <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.8;">🔀 \${currentLang === 'ar' ? 'تم خلط الأسئلة تلقائياً' : 'Questions were randomly shuffled'}</p>
+        <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; direction: ${currentLang === 'ar' ? 'rtl' : 'ltr'};">
+            <div style="background: linear-gradient(135deg, #0369a1, #1d4ed8); color: white; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
+                <h2 style="margin: 0; font-size: 22px;">🧮 ${currentLang === 'ar' ? 'نتيجة امتحان الاتصال والسلوك الطرفي والنهايات' : 'Continuity, End Behavior & Limits Exam Result'}</h2>
+                <p style="margin: 5px 0 0 0; opacity: 0.9;">${currentLang === 'ar' ? 'Continuity, End Behavior, and Limits' : 'Continuity, End Behavior, and Limits'}</p>
+                <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.8;">🔀 ${currentLang === 'ar' ? 'تم خلط الأسئلة تلقائياً' : 'Questions were randomly shuffled'}</p>
             </div>
             
-            <div style="background: #f0fdfa; padding: 15px; border: 1px solid #99f6e4;">
+            <div style="background: #f0f9ff; padding: 15px; border: 1px solid #bae6fd;">
                 <table style="width: 100%; border-collapse: collapse;">
                     <tr>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '👤 الاسم:' : '👤 Name:'}</td>
-                        <td style="padding: 8px;">\${name}</td>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '🏫 الشعبة:' : '🏫 Class:'}</td>
-                        <td style="padding: 8px;">\${studentClass}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #075985;">${currentLang === 'ar' ? '👤 الاسم:' : '👤 Name:'}</td>
+                        <td style="padding: 8px;">${name}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #075985;">${currentLang === 'ar' ? '🏫 الشعبة:' : '🏫 Class:'}</td>
+                        <td style="padding: 8px;">${studentClass}</td>
                     </tr>
                     <tr>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '📅 التاريخ:' : '📅 Date:'}</td>
-                        <td style="padding: 8px;">\${date}</td>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">\${currentLang === 'ar' ? '🏆 التقدير:' : '🏆 Grade:'}</td>
-                        <td style="padding: 8px;">\${badge}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #075985;">${currentLang === 'ar' ? '📅 التاريخ:' : '📅 Date:'}</td>
+                        <td style="padding: 8px;">${date}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #075985;">${currentLang === 'ar' ? '🏆 التقدير:' : '🏆 Grade:'}</td>
+                        <td style="padding: 8px;">${badge}</td>
                     </tr>
                 </table>
             </div>
 
             <div style="background: white; padding: 20px; text-align: center; border-bottom: 2px solid #e5e7eb;">
                 <div style="display: inline-block; margin: 0 15px;">
-                    <div style="font-size: 32px; font-weight: bold; color: #0d9488;">\${score}</div>
-                    <div style="color: #6b7280; font-size: 13px;">\${currentLang === 'ar' ? 'الدرجة الكلية' : 'Total Score'}</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #0369a1;">${score}</div>
+                    <div style="color: #6b7280; font-size: 13px;">${currentLang === 'ar' ? 'الدرجة الكلية' : 'Total Score'}</div>
                 </div>
                 <div style="display: inline-block; margin: 0 15px;">
-                    <div style="font-size: 32px; font-weight: bold; color: #059669;">\${successRate}%</div>
-                    <div style="color: #6b7280; font-size: 13px;">\${currentLang === 'ar' ? 'نسبة النجاح' : 'Success Rate'}</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #059669;">${successRate}%</div>
+                    <div style="color: #6b7280; font-size: 13px;">${currentLang === 'ar' ? 'نسبة النجاح' : 'Success Rate'}</div>
                 </div>
             </div>
 
             <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db;">
-                \${currentLang === 'ar' ? '📝 تفاصيل الإجابات' : '📝 Answer Details'}
+                📝 ${currentLang === 'ar' ? 'تفاصيل الإجابات' : 'Answer Details'}
             </h3>
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <thead>
-                    <tr style="background: #0d9488; color: white;">
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 8%;">#</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 32%;">\${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">\${currentLang === 'ar' ? 'الإجابة' : 'Answer'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">\${currentLang === 'ar' ? 'الصحيحة' : 'Correct'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">\${currentLang === 'ar' ? 'النتيجة' : 'Status'}</th>
+                    <tr style="background: #0369a1; color: white;">
+                        <th style="padding: 10px; border: 1px solid #075985; width: 8%;">#</th>
+                        <th style="padding: 10px; border: 1px solid #075985; width: 32%;">${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
+                        <th style="padding: 10px; border: 1px solid #075985; width: 15%;">${currentLang === 'ar' ? 'الإجابة' : 'Answer'}</th>
+                        <th style="padding: 10px; border: 1px solid #075985; width: 15%;">${currentLang === 'ar' ? 'الصحيحة' : 'Correct'}</th>
+                        <th style="padding: 10px; border: 1px solid #075985; width: 15%;">${currentLang === 'ar' ? 'النتيجة' : 'Status'}</th>
                     </tr>
                 </thead>
                 <tbody>
     `;
 
-    let sectionScores = [sec1, sec2, sec3, sec4, sec5];
+    let sectionScores = [0, 0, 0, 0, 0];
     let sectionTotals = [4, 4, 4, 4, 4];
 
     for (let i = 0; i < 20; i++) {
-        const selected = document.querySelector(`input[name="q\${i}"]:checked`);
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
         const selectedValue = selected ? selected.value : '-';
         const correctValue = correctAnswersMap[i];
         const isCorrect = selectedValue === correctValue;
         
         const sectionIndex = Math.floor(i / 4);
+        if (isCorrect) sectionScores[sectionIndex]++;
 
         const rowBg = i % 2 === 0 ? '#f9fafb' : '#ffffff';
         const statusBg = isCorrect ? '#dcfce7' : '#fee2e2';
@@ -1087,13 +704,13 @@ function sendResultsToEmail() {
             : (currentLang === 'ar' ? 'خطأ' : 'Wrong');
 
         answersHTML += `
-            <tr style="background: \${rowBg};">
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">\${i + 1}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb;">\${currentSectionNames[sectionIndex]}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">\${selectedValue.toUpperCase()}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #059669;">\${correctValue.toUpperCase()}</td>
-                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; background: \${statusBg}; color: \${statusColor}; font-weight: bold;">
-                    \${statusIcon} \${statusText}
+            <tr style="background: ${rowBg};">
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">${i + 1}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb;">${currentSectionNames[sectionIndex]}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold;">${selectedValue.toUpperCase()}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #059669;">${correctValue.toUpperCase()}</td>
+                <td style="padding: 8px; border: 1px solid #e5e7eb; text-align: center; background: ${statusBg}; color: ${statusColor}; font-weight: bold;">
+                    ${statusIcon} ${statusText}
                 </td>
             </tr>
         `;
@@ -1103,15 +720,15 @@ function sendResultsToEmail() {
                 </tbody>
             </table>
 
-            <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db; border-top: 3px solid #0d9488;">
-                📊 \${currentLang === 'ar' ? 'تفصيل الأداء' : 'Performance Breakdown'}
+            <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db; border-top: 3px solid #0369a1;">
+                📊 ${currentLang === 'ar' ? 'تفصيل الأداء' : 'Performance Breakdown'}
             </h3>
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <thead>
-                    <tr style="background: #7c3aed; color: white;">
-                        <th style="padding: 10px; border: 1px solid #6d28d9;">\${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
-                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 20%;">\${currentLang === 'ar' ? 'النتيجة' : 'Score'}</th>
-                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 20%;">\${currentLang === 'ar' ? 'النسبة' : 'Percentage'}</th>
+                    <tr style="background: #1d4ed8; color: white;">
+                        <th style="padding: 10px; border: 1px solid #1e40af;">${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
+                        <th style="padding: 10px; border: 1px solid #1e40af; width: 20%;">${currentLang === 'ar' ? 'النتيجة' : 'Score'}</th>
+                        <th style="padding: 10px; border: 1px solid #1e40af; width: 20%;">${currentLang === 'ar' ? 'النسبة' : 'Percentage'}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1123,16 +740,16 @@ function sendResultsToEmail() {
         const rowBg = i % 2 === 0 ? '#f9fafb' : '#ffffff';
         
         answersHTML += `
-            <tr style="background: \${rowBg};">
-                <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: 600;">\${currentSectionNames[i]}</td>
-                <td style="padding: 10px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #0d9488;">
-                    \${sectionScores[i]} / \${sectionTotals[i]}
+            <tr style="background: ${rowBg};">
+                <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: 600;">${currentSectionNames[i]}</td>
+                <td style="padding: 10px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #0369a1;">
+                    ${sectionScores[i]} / ${sectionTotals[i]}
                 </td>
                 <td style="padding: 10px; border: 1px solid #e5e7eb;">
                     <div style="background: #e5e7eb; border-radius: 10px; overflow: hidden; height: 20px; position: relative;">
-                        <div style="background: \${barColor}; width: \${percentage}%; height: 100%;"></div>
-                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; font-weight: bold; color: #1f2937;">
-                            \${percentage}%
+                        <div style="background: ${barColor}; width: ${percentage}%; height: 100%;"></div>
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 11px; font-weight: bold; color: #1f2937;">
+                            ${percentage}%
                         </span>
                     </div>
                 </td>
@@ -1146,8 +763,8 @@ function sendResultsToEmail() {
 
             <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 15px; border-radius: 0 0 10px 10px; border-top: 2px solid #f59e0b;">
                 <p style="margin: 0; color: #78350f; text-align: center; font-size: 13px;">
-                    💡 <strong>\${currentLang === 'ar' ? 'ملاحظة:' : 'Note:'}</strong> 
-                    \${currentLang === 'ar' 
+                    💡 <strong>${currentLang === 'ar' ? 'ملاحظة:' : 'Note:'}</strong> 
+                    ${currentLang === 'ar' 
                         ? 'تم إرسال هذا التقرير تلقائياً من منصة 4U التعليمية | Mr. Mohammed Hesham' 
                         : 'This report was automatically sent from 4U Educational Platform | Mr. Mohammed Hesham'}
                 </p>
